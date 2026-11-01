@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101a32">
+    <title>DeepTruth | Media Intelligence</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="appLoader" class="app-loader">
+    <div class="loader-content">
+        <div class="loader-logo">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h1>DeepTruth</h1>
+        <p>MEDIA INTELLIGENCE PLATFORM</p>
+        <div class="loader-track">
+            <div class="loader-progress"></div>
+        </div>
+        <span>Initializing secure workspace...</span>
+    </div>
+</div>
+
+<!-- APPLICATION -->
+<div class="app-layout" id="appLayout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+                <h2>DeepTruth</h2>
+                <span>MEDIA INTELLIGENCE</span>
+            </div>
+        </div>
+
+        <div class="workspace-label">WORKSPACE</div>
+
+        <nav class="side-navigation">
+            <button class="nav-link active" data-page="overview">
+                <i class="fa-solid fa-border-all"></i>
+                <span>Overview</span>
+            </button>
+
+            <button class="nav-link" data-page="investigation">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <span>New Investigation</span>
+            </button>
+
+            <button class="nav-link" data-page="history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Scan History</span>
+            </button>
+
+            <button class="nav-link" data-page="reports">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+            </button>
+        </nav>
+
+        <div class="workspace-label tools-label">INTELLIGENCE TOOLS</div>
+
+        <nav class="side-navigation">
+            <button class="nav-link" data-page="ai-detection">
+                <i class="fa-solid fa-brain"></i>
+                <span>AI Detection</span>
+            </button>
+
+            <button class="nav-link" data-page="metadata">
+                <i class="fa-solid fa-fingerprint"></i>
+                <span>Image Forensics</span>
+            </button>
+
+            <button class="nav-link" data-page="prompt">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Prompt Analysis</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="security-card">
+                <div class="security-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h4>Secure Workspace</h4>
+                <p>Media analysis and evidence inspection in one place.</p>
+            </div>
+
+            <button class="nav-link" data-page="settings">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </button>
+
+            <div class="profile">
+                <div class="profile-avatar">DT</div>
+                <div>
+                    <strong>DeepTruth User</strong>
+                    <span>Investigator</span>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div>
+                    <span class="breadcrumb">Workspace /</span>
+                    <strong id="pageTitle">Overview</strong>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </div>
+                <button class="icon-button" title="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="top-avatar">DT</div>
+            </div>
+        </header>
+
+        <!-- OVERVIEW PAGE -->
+        <section class="page-section active" id="page-overview">
+
+            <div class="welcome-section">
+                <div>
+                    <div class="eyebrow">
+                        <span class="eyebrow-line"></span>
+                        DIGITAL MEDIA INTELLIGENCE
+                    </div>
+                    <h1>Welcome to <span>DeepTruth.</span></h1>
+                    <p>
+                        Investigate digital media, detect synthetic content
+                        and explore evidence with AI-powered analysis.
+                    </p>
+                </div>
+
+                <button class="primary-button" data-go="investigation">
+                    <i class="fa-solid fa-plus"></i>
+                    New Investigation
+                </button>
+            </div>
+
+            <!-- SUMMARY CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Investigations</span>
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h2 id="totalScans">0</h2>
+                    <span class="stat-description">Completed scans this session</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>AI Classifications</span>
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h2 id="aiScans">0</h2>
+                    <span class="stat-description">Model predictions recorded</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Human Classifications</span>
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h2 id="humanScans">0</h2>
+                    <span class="stat-description">Model predictions recorded</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Reports Generated</span>
+                        <i class="fa-solid fa-file-shield"></i>
+                    </div>
+                    <h2 id="totalReports">0</h2>
+                    <span class="stat-description">Reports available this session</span>
+                </div>
+
+            </div>
+
+            <!-- MAIN DASHBOARD GRID -->
+            <div class="dashboard-grid">
+
+                <!-- INVESTIGATION CARD -->
+                <div class="panel investigation-panel" id="investigationPanel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="section-overline">START ANALYSIS</span>
+                            <h2>New Investigation</h2>
+                            <p>Upload media to begin a forensic inspection.</p>
+                        </div>
+                        <div class="panel-icon">
+                            <i class="fa-solid fa-crosshairs"></i>
+                        </div>
+                    </div>
+
+                    <label class="drop-zone" for="mediaFile" id="dropZone">
+                        <div class="upload-symbol">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <h3>Upload your media</h3>
+                        <p>Drag and drop your file here, or browse your device.</p>
+                        <span class="browse-label">Browse Files</span>
+                        <div class="file-support">
+                            JPG · JPEG · PNG · WEBP · MP4 · MOV · AVI · MKV
+                        </div>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="mediaFile"
+                        accept=".jpg,.jpeg,.png,.webp,.mp4,.mov,.avi,.mkv"
+                    >
+
+                    <div id="fileName">No file selected</div>
+
+                    <button id="scanButton" class="primary-button scan-button" onclick="uploadMedia()">
+                        <span>Start Forensic Scan</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                    <p id="status">Select a file to begin your investigation.</p>
+                </div>
+
+                <!-- ANALYSIS MODULES -->
+                <div class="panel modules-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="section-overline">CAPABILITIES</span>
+                            <h2>Analysis Modules</h2>
+                            <p>Explore the available intelligence tools.</p>
+                        </div>
+                    </div>
+
+                    <div class="module-list">
+
+                        <button class="module-item" data-go="ai-detection">
+                            <div class="module-icon blue-icon">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div>
+                                <strong>AI Content Detection</strong>
+                                <span>AI vs Human image classification</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right module-arrow"></i>
+                        </button>
+
+                        <button class="module-item" data-go="metadata">
+                            <div class="module-icon purple-icon">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+                            <div>
+                                <strong>Image Metadata</strong>
+                                <span>Inspect embedded image information</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right module-arrow"></i>
+                        </button>
+
+                        <button class="module-item" data-go="prompt">
+                            <div class="module-icon orange-icon">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <div>
+                                <strong>Prompt Investigation</strong>
+                                <span>Inspect available prompt metadata</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right module-arrow"></i>
+                        </button>
+
+                        <button class="module-item" data-go="reports">
+                            <div class="module-icon green-icon">
+                                <i class="fa-solid fa-file-chart-column"></i>
+                            </div>
+                            <div>
+                                <strong>Forensic Reports</strong>
+                                <span>Review analysis findings</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right module-arrow"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RECENT ACTIVITY -->
+            <div class="panel activity-panel">
+                <div class="panel-heading activity-heading">
+                    <div>
+                        <span class="section-overline">INVESTIGATION LOG</span>
+                        <h2>Recent Activity</h2>
+                        <p>Your recent media investigations.</p>
+                    </div>
+                    <button class="text-button" data-go="history">
+                        View History <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div id="recentActivity" class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </div>
+                    <h3>No investigations yet</h3>
+                    <p>Your completed scans will appear here.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- INVESTIGATION PAGE -->
+        <section class="page-section" id="page-investigation">
+            <div class="page-header">
+                <span class="section-overline">MEDIA FORENSICS</span>
+                <h1>New Investigation</h1>
+                <p>Upload an image or video to begin an analysis.</p>
+            </div>
+
+            <div class="panel standalone-panel">
+                <div class="standalone-upload">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <h2>Submit media for inspection</h2>
+                    <p>Supported image and video formats, maximum 50 MB.</p>
+                    <label for="mediaFile" class="secondary-button">
+                        Select Media
+                    </label>
+                </div>
+                <div id="investigationInfo">
+                    Your analysis results will be displayed in the Overview report area.
+                </div>
+            </div>
+        </section>
+
+        <!-- HISTORY PAGE -->
+        <section class="page-section" id="page-history">
+            <div class="page-header">
+                <span class="section-overline">ACTIVITY</span>
+                <h1>Scan History</h1>
+                <p>Review your completed investigations.</p>
+            </div>
+            <div class="panel">
+                <div id="historyList" class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3>No scan history</h3>
+                    <p>Completed investigations will appear here.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- REPORTS PAGE -->
+        <section class="page-section" id="page-reports">
+            <div class="page-header">
+                <span class="section-overline">DOCUMENTATION</span>
+                <h1>Forensic Reports</h1>
+                <p>Review and export your investigation findings.</p>
+            </div>
+            <div class="panel">
+                <div id="reportsList" class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-file-shield"></i>
+                    </div>
+                    <h3>No reports generated</h3>
+                    <p>Complete an investigation to generate report data.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI DETECTION PAGE -->
+        <section class="page-section" id="page-ai-detection">
+            <div class="page-header">
+                <span class="section-overline">INTELLIGENCE MODULE</span>
+                <h1>AI Content Detection</h1>
+                <p>Examine model predictions for artificial and human-labeled images.</p>
+            </div>
+            <div class="panel information-panel">
+                <i class="fa-solid fa-brain"></i>
+                <h2>AI Image Classification</h2>
+                <p>DeepTruth uses an image classification model to estimate whether an image is artificial or human-labeled.</p>
+                <p class="disclaimer">Model confidence is not proof of authenticity or a guaranteed accuracy measurement.</p>
+                <button class="primary-button" data-go="investigation">Start Detection</button>
+            </div>
+        </section>
+
+        <!-- METADATA PAGE -->
+        <section class="page-section" id="page-metadata">
+            <div class="page-header">
+                <span class="section-overline">DIGITAL EVIDENCE</span>
+                <h1>Image Forensics</h1>
+                <p>Explore image properties and available embedded metadata.</p>
+            </div>
+            <div class="panel information-panel">
+                <i class="fa-solid fa-fingerprint"></i>
+                <h2>Metadata Inspection</h2>
+                <p>Inspect dimensions, image format, camera information, software and available EXIF data.</p>
+                <p class="disclaimer">Metadata may be missing, modified or removed.</p>
+                <button class="primary-button" data-go="investigation">Inspect an Image</button>
+            </div>
+        </section>
+
+        <!-- PROMPT PAGE -->
+        <section class="page-section" id="page-prompt">
+            <div class="page-header">
+                <span class="section-overline">PROMPT FORENSICS</span>
+                <h1>Prompt Investigation</h1>
+                <p>Investigate prompt information embedded in media.</p>
+            </div>
+            <div class="panel information-panel">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h2>Prompt & Origin Clues</h2>
+                <p>DeepTruth can display prompt information when it is present in supported image metadata.</p>
+                <p class="disclaimer">An original prompt cannot reliably be recovered from pixels alone. Estimated descriptions must be labeled separately.</p>
+                <button class="primary-button" data-go="investigation">Investigate Media</button>
+            </div>
+        </section>
+
+        <!-- SETTINGS PAGE -->
+        <section class="page-section" id="page-settings">
+            <div class="page-header">
+                <span class="section-overline">PREFERENCES</span>
+                <h1>Settings</h1>
+                <p>Application information and preferences.</p>
+            </div>
+            <div class="panel information-panel">
+                <i class="fa-solid fa-gear"></i>
+                <h2>DeepTruth Settings</h2>
+                <p>Theme: Midnight Blue</p>
+                <p>Platform: DeepTruth Media Intelligence</p>
+                <p>Version: 2.0.0</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <span>© 2026 DeepTruth</span>
+            <span>Verify before you trust.</span>
+        </footer>
+
+    </main>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
